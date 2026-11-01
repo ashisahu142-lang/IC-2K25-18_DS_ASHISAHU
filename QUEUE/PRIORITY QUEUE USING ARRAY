@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int q[5] = {10, 30, 20};
+    int n = 3, max = 0;
+
+    for (int i = 1; i < n; i++)
+        if (q[i] > q[max])
+            max = i;
+
+    cout << "Deleted: " << q[max];
+
+    return 0;
+}
