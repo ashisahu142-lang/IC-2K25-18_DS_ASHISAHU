@@ -1,0 +1,60 @@
+#include <iostream>
+using namespace std;
+
+#define MAX 100
+
+struct Stack
+{
+    int row[MAX];
+    int col[MAX];
+    int value[MAX];
+    int top;
+};
+
+void push(Stack &s, int r, int c, int v)
+{
+    s.top++;
+    s.row[s.top] = r;
+    s.col[s.top] = c;
+    s.value[s.top] = v;
+}
+
+void display(Stack &s)
+{
+    cout << "Row Col Value\n";
+
+    for (int i = 0; i <= s.top; i++)
+    {
+        cout << s.row[i] << "   "
+             << s.col[i] << "   "
+             << s.value[i] << endl;
+    }
+}
+
+int main()
+{
+    Stack s;
+    s.top = -1;
+
+    int matrix[3][3] =
+    {
+        {0, 5, 0},
+        {0, 0, 8},
+        {3, 0, 0}
+    };
+
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            if (matrix[i][j] != 0)
+            {
+                push(s, i, j, matrix[i][j]);
+            }
+        }
+    }
+
+    display(s);
+
+    return 0;
+}
