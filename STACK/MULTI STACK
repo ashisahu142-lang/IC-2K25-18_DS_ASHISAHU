@@ -1,0 +1,73 @@
+#include <iostream>
+using namespace std;
+
+#define MAX 10
+
+int stack[MAX];
+int top1 = -1;
+int top2 = MAX;
+
+void push1(int value)
+{
+    if (top1 + 1 == top2)
+        cout << "Stack Overflow\n";
+    else
+        stack[++top1] = value;
+}
+
+void push2(int value)
+{
+    if (top1 + 1 == top2)
+        cout << "Stack Overflow\n";
+    else
+        stack[--top2] = value;
+}
+
+int pop1()
+{
+    if (top1 == -1)
+        return -1;
+
+    return stack[top1--];
+}
+
+int pop2()
+{
+    if (top2 == MAX)
+        return -1;
+
+    return stack[top2++];
+}
+
+void display()
+{
+    cout << "Stack 1: ";
+    for (int i = 0; i <= top1; i++)
+        cout << stack[i] << " ";
+
+    cout << "\nStack 2: ";
+    for (int i = MAX - 1; i >= top2; i--)
+        cout << stack[i] << " ";
+
+    cout << endl;
+}
+
+int main()
+{
+    push1(10);
+    push1(20);
+    push1(30);
+
+    push2(90);
+    push2(80);
+    push2(70);
+
+    display();
+
+    cout << "Pop Stack 1: " << pop1() << endl;
+    cout << "Pop Stack 2: " << pop2() << endl;
+
+    display();
+
+    return 0;
+}
